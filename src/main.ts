@@ -1,6 +1,7 @@
 import 'dotenv/config';
-import { simpleAgent } from './agent';
 import { HumanMessage } from '@langchain/core/messages';
+import { simpleAgent } from './agent';
+import MermaidGraph from './MermaidGraph';
 
 console.log('BASE_URL_OLLAMA', process.env.BASE_URL_OLLAMA);
 console.log('TAVILY_API_KEY', process.env.TAVILY_API_KEY);
@@ -9,8 +10,15 @@ console.log('LANGCHAIN_TRACING_V2', process.env.LANGCHAIN_TRACING_V2);
 console.log('LANGCHAIN_PROJECT', process.env.LANGCHAIN_PROJECT);
 
 async function main() {
+  // Create a simple agent
   const agent = simpleAgent();
 
+  // Draw the agent graph
+  await MermaidGraph.drawMermaidByConsole(agent);
+
+  // Draw the agent graph as an image
+  await MermaidGraph.drawMermaidAsImage(agent);
+  
   // Now it's time to use!
   const agentFinalState = await agent.invoke(
     { messages: [new HumanMessage("¿Quien es Hernan Gonzalez Moreno? Buscalo en github y en Linkedin. Dame información de él. Responde en español.")] },
