@@ -3,7 +3,7 @@ import { ChatOllama } from "@langchain/ollama";
 import { CompiledStateGraph, MemorySaver } from "@langchain/langgraph";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 
-export function simpleAgent(): CompiledStateGraph<any, any>{
+export default function simpleAgent(): CompiledStateGraph<any, any>{
   // Define the tools for the agent to use
   const agentTools = [new TavilySearchResults({ maxResults: 3 })];
   const agentModel = new ChatOllama({

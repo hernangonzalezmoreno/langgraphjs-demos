@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import { HumanMessage } from '@langchain/core/messages';
-import { simpleAgent } from './agent';
 import MermaidGraph from './MermaidGraph';
+import { agentBehavior, simpleAgent } from './agents';
 
 console.log('BASE_URL_OLLAMA', process.env.BASE_URL_OLLAMA);
 console.log('TAVILY_API_KEY', process.env.TAVILY_API_KEY);
@@ -11,7 +11,10 @@ console.log('LANGCHAIN_PROJECT', process.env.LANGCHAIN_PROJECT);
 
 async function main() {
   // Create a simple agent
-  const agent = simpleAgent();
+  // const agent = simpleAgent();
+
+  // Or create a agent behavior
+  const agent = await agentBehavior();
 
   // Draw the agent graph
   await MermaidGraph.drawMermaidByConsole(agent);
