@@ -6,6 +6,7 @@
     "start2": "ts-node src/main2.ts",
     "start3": "ts-node src/main3.ts",
     "start4": "ts-node src/main4.ts",
+    "start5": "ts-node src/main5.ts",
     "build": "tsc",
     "prod": "node dist/main.js"
   },
