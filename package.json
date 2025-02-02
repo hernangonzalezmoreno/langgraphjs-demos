@@ -3,10 +3,6 @@
   "packageManager": "yarn@4.4.1",
   "scripts": {
     "start": "ts-node src/main.ts",
-    "start2": "ts-node src/main2.ts",
-    "start3": "ts-node src/main3.ts",
-    "start4": "ts-node src/main4.ts",
-    "start5": "ts-node src/main5.ts",
     "build": "tsc",
     "prod": "node dist/main.js"
   },
@@ -21,6 +17,7 @@
     "@langchain/langgraph": "0.2.44",
     "@langchain/ollama": "0.1.5",
     "dotenv": "16.4.7",
+    "inquirer": "12.3.3",
     "zod": "3.24.1"
   }
 }

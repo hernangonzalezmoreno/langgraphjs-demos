@@ -1,15 +1,8 @@
-import 'dotenv/config';
 import { tool } from "@langchain/core/tools";
-import { z } from "zod";
 import { ChatOllama } from '@langchain/ollama';
+import { z } from "zod";
 
-console.log('BASE_URL_OLLAMA', process.env.BASE_URL_OLLAMA);
-console.log('TAVILY_API_KEY', process.env.TAVILY_API_KEY);
-console.log('LANGCHAIN_API_KEY', process.env.LANGCHAIN_API_KEY);
-console.log('LANGCHAIN_TRACING_V2', process.env.LANGCHAIN_TRACING_V2);
-console.log('LANGCHAIN_PROJECT', process.env.LANGCHAIN_PROJECT);
-
-async function main() {
+export async function buildingBlocks() {
 
   const llm = new ChatOllama({
       model: 'llama3.1:8b',
@@ -57,5 +50,3 @@ async function main() {
   console.log(message.tool_calls);
   console.log(message);
 }
-
-main();

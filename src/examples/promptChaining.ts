@@ -1,15 +1,9 @@
 import 'dotenv/config';
 import { ChatOllama } from '@langchain/ollama';
 import { StateGraph, Annotation } from "@langchain/langgraph";
-import MermaidGraph from './MermaidGraph';
+import MermaidGraph from '../MermaidGraph';
 
-console.log('BASE_URL_OLLAMA', process.env.BASE_URL_OLLAMA);
-console.log('TAVILY_API_KEY', process.env.TAVILY_API_KEY);
-console.log('LANGCHAIN_API_KEY', process.env.LANGCHAIN_API_KEY);
-console.log('LANGCHAIN_TRACING_V2', process.env.LANGCHAIN_TRACING_V2);
-console.log('LANGCHAIN_PROJECT', process.env.LANGCHAIN_PROJECT);
-
-async function main() {
+export async function promptChaining() {
   const llm = new ChatOllama({
     model: 'llama3.1:8b',
     temperature: 0.1,
@@ -90,5 +84,3 @@ async function main() {
     console.log("Joke failed quality gate - no punchline detected!");
   }
 }
-
-main();
