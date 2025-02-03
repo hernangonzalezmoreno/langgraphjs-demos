@@ -6,7 +6,8 @@ import {
   buildingBlocks,
   promptChaining,
   parallelization,
-  routing
+  routing,
+  orchestratorWorker
 } from './examples';
 
 console.log('BASE_URL_OLLAMA', process.env.BASE_URL_OLLAMA);
@@ -24,6 +25,7 @@ enum ExampleOptions {
   PROMPT_CHAINING = 'Prompt chaining',
   PARALLELIZATION = 'Parallelization',
   ROUTING = 'Routing',
+  ORCHESTRATOR_WORKER = 'Orchestrator-Worker',
 }
 
 async function main() {
@@ -56,6 +58,9 @@ async function main() {
       break;
     case ExampleOptions.ROUTING:
       await routing();
+      break;
+    case ExampleOptions.ORCHESTRATOR_WORKER:
+      await orchestratorWorker();
       break;
   }
 }
