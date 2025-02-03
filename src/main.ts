@@ -10,6 +10,8 @@ import {
 } from './examples';
 
 console.log('BASE_URL_OLLAMA', process.env.BASE_URL_OLLAMA);
+console.log('MODEL_NAME', process.env.MODEL_NAME);
+console.log('TEMPERATURE', process.env.TEMPERATURE);
 console.log('TAVILY_API_KEY', process.env.TAVILY_API_KEY);
 console.log('LANGCHAIN_API_KEY', process.env.LANGCHAIN_API_KEY);
 console.log('LANGCHAIN_TRACING_V2', process.env.LANGCHAIN_TRACING_V2);
@@ -25,9 +27,7 @@ enum ExampleOptions {
 }
 
 async function main() {
-  console.log();
-  console.log('====================');
-  console.log();
+  console.log('\n====================\n');
 
   const userResponse = await inquirer.prompt([
     {

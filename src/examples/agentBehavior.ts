@@ -12,8 +12,8 @@ export async function agentBehavior(): Promise<CompiledStateGraph<any, any, any,
 
   // Create a model and give it access to the tools
   const model = new ChatOllama({
-    model: 'llama3.1:8b',
-    temperature: 0,
+    model: process.env.MODEL_NAME,
+    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
     baseUrl: process.env.BASE_URL_OLLAMA,
   }).bindTools(tools);
   

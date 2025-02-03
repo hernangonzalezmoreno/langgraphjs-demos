@@ -9,8 +9,8 @@ export function simpleAgent(): CompiledStateGraph<any, any>{
   // Define the tools for the agent to use
   const agentTools = [new TavilySearchResults({ maxResults: 3 })];
   const agentModel = new ChatOllama({
-    model: 'llama3.1:8b',
-    temperature: 0.1,
+    model: process.env.MODEL_NAME,
+    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
     baseUrl: process.env.BASE_URL_OLLAMA,
   });
 
