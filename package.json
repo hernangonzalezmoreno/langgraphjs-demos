@@ -1,5 +1,5 @@
 {
-  "name": "langgraphjs-agent-1",
+  "name": "langgraphjs-demos",
   "packageManager": "yarn@4.4.1",
   "scripts": {
     "start": "ts-node src/main.ts",

@@ -1,4 +1,4 @@
-# langgraphjs-agent-1
+# langgraphjs-demos
 
 This project implements all the examples from the [LangGraphJS Workflows Tutorials](https://langchain-ai.github.io/langgraphjs/tutorials/workflows/).
 
@@ -23,8 +23,8 @@ To get started with this project, follow these steps:
 
 1. **Clone the repository**:
   ```bash
-  git clone https://github.com/hernangonzalezmoreno/langgraphjs-agent-1.git
-  cd langgraphjs-agent-1
+  git clone https://github.com/hernangonzalezmoreno/langgraphjs-demos.git
+  cd langgraphjs-demos
   ```
 
 2. **Ensure you are using Node.js v20**:
