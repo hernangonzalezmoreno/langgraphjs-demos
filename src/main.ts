@@ -12,7 +12,7 @@ async function main() {
     const llm = await LlmProviderManager.selectLlmProviderFromUser();
     await ExampleManager.run(llm);
   }catch(e){
-    console.error(e);
+    console.error('\n[Main] Caught error:\n', e);
   }
   
   main();

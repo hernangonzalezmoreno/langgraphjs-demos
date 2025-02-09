@@ -1,15 +1,9 @@
 import { z } from "zod";
-import { ChatOllama } from "@langchain/ollama";
+import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { Annotation, StateGraph, Send } from "@langchain/langgraph";
 import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
-export async function orchestratorWorker() {
-  const llm = new ChatOllama({
-    model: process.env.MODEL_NAME,
-    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
-    baseUrl: process.env.BASE_URL_OLLAMA,
-  });
-
+export async function orchestratorWorker(llm: BaseChatModel) {
   // Schema for structured output to use in planning
   const sectionSchema = z.object({
     name: z.string().describe("Name for this section of the report."),
@@ -53,6 +47,11 @@ export async function orchestratorWorker() {
       { role: "user", content: `Here is the report topic: ${state.topic}` },
     ]);
 
+    console.log('reportSections:\n', JSON.stringify(reportSections,null,2));
+
+    // Validate using parse (throws an exception if validation fails)
+    sectionsSchema.parse(reportSections);
+    
     return { sections: reportSections.sections };
   }
 

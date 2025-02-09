@@ -6,7 +6,8 @@ import {
   buildingBlocks,
   promptChaining,
   parallelization,
-  routing
+  routing,
+  orchestratorWorker
 } from "./examples";
 
 export enum ExampleOptions {
@@ -16,6 +17,7 @@ export enum ExampleOptions {
   PROMPT_CHAINING = 'Prompt chaining',
   PARALLELIZATION = 'Parallelization',
   ROUTING = 'Routing',
+  ORCHESTRATOR_WORKER = 'Orchestrator-Worker',
 }
 
 export class ExampleManager {
@@ -51,6 +53,11 @@ export class ExampleManager {
       case ExampleOptions.ROUTING:
         await routing(llm);
         break;
+      case ExampleOptions.ORCHESTRATOR_WORKER:
+        await orchestratorWorker(llm);
+        break;
+      default:
+        throw new Error('Invalid example option');
     }
   }
 }
