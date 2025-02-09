@@ -1,21 +1,19 @@
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
+import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { AIMessage, HumanMessage } from "@langchain/core/messages";
 import { CompiledStateGraph, MessagesAnnotation, StateGraph } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { ChatOllama } from "@langchain/ollama";
-import MermaidGraph from "../MermaidGraph";
+import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
-export async function agentBehavior(): Promise<CompiledStateGraph<any, any, any, any, any, any>> {
+export async function agentBehavior(llm: BaseChatModel): Promise<CompiledStateGraph<any, any, any, any, any, any>> {
   // Define the tools for the agent to use
   const tools = [new TavilySearchResults({ maxResults: 3 })];
   const toolNode = new ToolNode(tools);
 
   // Create a model and give it access to the tools
-  const model = new ChatOllama({
-    model: process.env.MODEL_NAME,
-    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
-    baseUrl: process.env.BASE_URL_OLLAMA,
-  }).bindTools(tools);
+  if(!llm.bindTools) throw new Error("The model does not support bindTools");
+  const model = llm.bindTools(tools);
   
   // Define the function that determines whether to continue or not
   function shouldContinue({ messages }: typeof MessagesAnnotation.State) {
@@ -50,9 +48,9 @@ export async function agentBehavior(): Promise<CompiledStateGraph<any, any, any,
   return app;
 }
 
-export async function executeAgentBehavior() {
+export async function executeAgentBehavior(llm: BaseChatModel) {
   // Create a agent behavior
-  const agent = await agentBehavior();
+  const agent = await agentBehavior(llm);
 
   // Draw the agent graph
   await MermaidGraph.drawMermaidByConsole(agent);

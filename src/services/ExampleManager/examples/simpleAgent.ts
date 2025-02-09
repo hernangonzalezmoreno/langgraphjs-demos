@@ -1,18 +1,14 @@
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
-import { ChatOllama } from "@langchain/ollama";
+import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { CompiledStateGraph, MemorySaver } from "@langchain/langgraph";
 import { createReactAgent } from "@langchain/langgraph/prebuilt";
 import { HumanMessage } from "@langchain/core/messages";
-import MermaidGraph from "../MermaidGraph";
+import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
-export function simpleAgent(): CompiledStateGraph<any, any>{
+export function simpleAgent(llm: BaseChatModel): CompiledStateGraph<any, any>{
   // Define the tools for the agent to use
   const agentTools = [new TavilySearchResults({ maxResults: 3 })];
-  const agentModel = new ChatOllama({
-    model: process.env.MODEL_NAME,
-    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
-    baseUrl: process.env.BASE_URL_OLLAMA,
-  });
+  const agentModel = llm;
 
   // Initialize memory to persist state between graph runs
   const agentCheckpointer = new MemorySaver();
@@ -24,9 +20,9 @@ export function simpleAgent(): CompiledStateGraph<any, any>{
   return agent;
 }
 
-export async function executeSimpleAgent(){
+export async function executeSimpleAgent(llm: BaseChatModel){
   // Create a simple agent
-  const agent = simpleAgent();
+  const agent = simpleAgent(llm);
 
   // Draw the agent graph
   await MermaidGraph.drawMermaidByConsole(agent);

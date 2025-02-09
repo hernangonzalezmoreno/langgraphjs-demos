@@ -1,14 +1,10 @@
+import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { tool } from "@langchain/core/tools";
-import { ChatOllama } from '@langchain/ollama';
 import { z } from "zod";
 
-export async function buildingBlocks() {
+export async function buildingBlocks(llm: BaseChatModel) {
 
-  const llm = new ChatOllama({
-      model: process.env.MODEL_NAME,
-      temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
-      baseUrl: process.env.BASE_URL_OLLAMA,
-    });
+  if(!llm.bindTools) throw new Error("The model does not support bindTools");
 
   const searchQuerySchema = z.object({
     searchQuery: z.string().describe("Query that is optimized web search."),
