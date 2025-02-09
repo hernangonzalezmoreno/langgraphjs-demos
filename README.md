@@ -16,6 +16,7 @@ The following examples from the LangGraphJS tutorials are implemented in this pr
 - **Prompt Chaining**: Illustrates how to chain prompts together to create more complex workflows.
 - **Parallelization**: Explains how to run tasks in parallel using LangGraphJS.
 - **Routing**: Demonstrates how to route tasks based on structured output.
+- **Orchestrator-Worker**: Demonstrates parallel task processing where an orchestrator divides work, workers execute concurrently, and a synthesizer combines the results.
 
 ## Getting Started
 
@@ -40,20 +41,11 @@ To get started with this project, follow these steps:
   ```
 
 4. **Set up environment variables**:
-  Create a 
-
-.env
-
- file in the root directory and add the following variables:
-   ```bash
-   BASE_URL_OLLAMA=
-   MODEL_NAME=
-   TEMPERATURE=
-   TAVILY_API_KEY=
-   LANGCHAIN_API_KEY=
-   LANGCHAIN_TRACING_V2=
-   LANGCHAIN_PROJECT=
-   ```
+  Create a `.env` file in the root directory by copying the `.env.example` file:
+  ```bash
+  cp .env.example .env
+  ```
+  Then fill in your environment variables in the `.env` file. See `.env.example` for all available configuration options.
 
 5. **Run the examples**:
   ```bash
