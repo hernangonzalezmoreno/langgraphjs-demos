@@ -3,7 +3,6 @@ import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { AIMessage, HumanMessage } from "@langchain/core/messages";
 import { CompiledStateGraph, MessagesAnnotation, StateGraph } from "@langchain/langgraph";
 import { ToolNode } from "@langchain/langgraph/prebuilt";
-import { ChatOllama } from "@langchain/ollama";
 import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
 export async function agentBehavior(llm: BaseChatModel): Promise<CompiledStateGraph<any, any, any, any, any, any>> {
