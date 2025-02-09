@@ -1,15 +1,9 @@
 import 'dotenv/config';
-import { ChatOllama } from '@langchain/ollama';
+import { BaseChatModel } from '@langchain/core/language_models/chat_models';
 import { StateGraph, Annotation } from "@langchain/langgraph";
-import MermaidGraph from '../MermaidGraph';
+import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
-export async function promptChaining() {
-  const llm = new ChatOllama({
-    model: process.env.MODEL_NAME,
-    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
-    baseUrl: process.env.BASE_URL_OLLAMA,
-  });
-
+export async function promptChaining(llm: BaseChatModel) {
   // Graph state
   const StateAnnotation = Annotation.Root({
     topic: Annotation<string>,

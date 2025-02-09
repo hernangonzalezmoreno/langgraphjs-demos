@@ -1,15 +1,9 @@
 import { z } from "zod";
 import { StateGraph, Annotation } from "@langchain/langgraph";
-import { ChatOllama } from '@langchain/ollama';
-import MermaidGraph from '../MermaidGraph';
+import { BaseChatModel } from "@langchain/core/language_models/chat_models";
+import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
-export async function routing() {
-  const llm = new ChatOllama({
-    model: process.env.MODEL_NAME,
-    temperature: parseFloat(process.env.TEMPERATURE ?? '0.1'),
-    baseUrl: process.env.BASE_URL_OLLAMA,
-  });
-
+export async function routing(llm: BaseChatModel) {
   // Schema for structured output to use as routing logic
   const routeSchema = z.object({
     step: z.enum(["poem", "story", "joke"]).describe(

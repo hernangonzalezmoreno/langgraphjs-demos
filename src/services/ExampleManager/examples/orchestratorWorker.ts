@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { ChatOllama } from "@langchain/ollama";
 import { Annotation, StateGraph, Send } from "@langchain/langgraph";
-import MermaidGraph from "../MermaidGraph";
+import MermaidGraph from "../../MermaidGraph/MermaidGraph";
 
 export async function orchestratorWorker() {
   const llm = new ChatOllama({
