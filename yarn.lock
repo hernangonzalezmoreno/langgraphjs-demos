@@ -686,6 +686,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@langchain/openai@npm:0.4.3":
+  version: 0.4.3
+  resolution: "@langchain/openai@npm:0.4.3"
+  dependencies:
+    js-tiktoken: "npm:^1.0.12"
+    openai: "npm:^4.77.0"
+    zod: "npm:^3.22.4"
+    zod-to-json-schema: "npm:^3.22.3"
+  peerDependencies:
+    "@langchain/core": ">=0.3.39 <0.4.0"
+  checksum: 10c0/796427ae6fb5dcdd7a4f38a5f295ef265da3bdd7ab79e2cfe94ecf9e33c5596f4a30c649f29f19079b20742f4036af354b91ff7c243a4c183919f8a78e999c64
+  languageName: node
+  linkType: hard
+
 "@langchain/openai@npm:>=0.1.0 <0.5.0, @langchain/openai@npm:>=0.2.0 <0.5.0":
   version: 0.4.2
   resolution: "@langchain/openai@npm:0.4.2"
@@ -1214,14 +1228,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"langgraphjs-agent-1@workspace:.":
+"langgraphjs-demos@workspace:.":
   version: 0.0.0-use.local
-  resolution: "langgraphjs-agent-1@workspace:."
+  resolution: "langgraphjs-demos@workspace:."
   dependencies:
     "@langchain/community": "npm:0.3.28"
     "@langchain/core": "npm:0.3.37"
     "@langchain/langgraph": "npm:0.2.44"
     "@langchain/ollama": "npm:0.1.5"
+    "@langchain/openai": "npm:0.4.3"
     "@types/node": "npm:22.12.0"
     dotenv: "npm:16.4.7"
     inquirer: "npm:12.3.3"
