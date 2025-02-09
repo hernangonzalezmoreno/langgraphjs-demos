@@ -1,11 +1,13 @@
 import { BaseChatModel } from "@langchain/core/language_models/chat_models";
 import { ChatOllama } from "@langchain/ollama";
 import { ChatOpenAI } from "@langchain/openai";
+import { ChatAnthropic } from "@langchain/anthropic";
 import inquirer from "inquirer";
 
 export enum LlmProvider {
   Ollama = 'ollama',
   OpenAI = 'openai',
+  Anthropic = 'anthropic',
 }
 
 export class LlmProviderManager {
@@ -28,6 +30,14 @@ export class LlmProviderManager {
         return new ChatOpenAI({
           model: process.env.OPENAI_MODEL_NAME,
           temperature: parseFloat(process.env.OPENAI_TEMPERATURE ?? '0.1'),
+        });
+      case LlmProvider.Anthropic:
+        console.log('ANTHROPIC_MODEL_NAME', process.env.ANTHROPIC_MODEL_NAME);
+        console.log('ANTHROPIC_TEMPERATURE', process.env.ANTHROPIC_TEMPERATURE);
+
+        return new ChatAnthropic({
+          model: process.env.ANTHROPIC_MODEL_NAME,
+          temperature: parseFloat(process.env.ANTHROPIC_TEMPERATURE ?? '0.1'),
         });
       default:
         throw new Error(`Unsupported LLM provider: ${llmProvider}`);
