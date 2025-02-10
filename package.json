@@ -1,6 +1,13 @@
 {
   "name": "langgraphjs-demos",
   "packageManager": "yarn@4.4.1",
+  "version": "0.1.0",
+  "description": "Implementation of LangGraphJS workflow tutorials examples from https://langchain-ai.github.io/langgraphjs/tutorials/workflows/",
+  "main": "src/main.ts",
+  "author": {
+    "name": "Hernán González Moreno",
+    "email": "hernangonzalezmoreno@gmail.com"
+  },
   "scripts": {
     "start": "ts-node src/main.ts",
     "build": "tsc",
