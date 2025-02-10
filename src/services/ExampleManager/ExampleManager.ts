@@ -7,7 +7,8 @@ import {
   promptChaining,
   parallelization,
   routing,
-  orchestratorWorker
+  orchestratorWorker,
+  evaluatorOptimizer
 } from "./examples";
 
 export enum ExampleOptions {
@@ -18,6 +19,7 @@ export enum ExampleOptions {
   PARALLELIZATION = 'Parallelization',
   ROUTING = 'Routing',
   ORCHESTRATOR_WORKER = 'Orchestrator-Worker',
+  EVALUATOR_OPTIMIZER = 'Evaluator-optimizer',
 }
 
 export class ExampleManager {
@@ -55,6 +57,9 @@ export class ExampleManager {
         break;
       case ExampleOptions.ORCHESTRATOR_WORKER:
         await orchestratorWorker(llm);
+        break;
+      case ExampleOptions.EVALUATOR_OPTIMIZER:
+        await evaluatorOptimizer(llm);
         break;
       default:
         throw new Error('Invalid example option');
