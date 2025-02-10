@@ -17,6 +17,7 @@ The following examples from the LangGraphJS tutorials are implemented in this pr
 - **Parallelization**: Explains how to run tasks in parallel using LangGraphJS.
 - **Routing**: Demonstrates how to route tasks based on structured output.
 - **Orchestrator-Worker**: Demonstrates parallel task processing where an orchestrator divides work, workers execute concurrently, and a synthesizer combines the results.
+- **Evaluator-Optimizer**: Shows how to create a feedback loop where content is generated, evaluated, and improved based on the evaluation results.
 
 ## Getting Started
 
