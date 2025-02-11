@@ -6,6 +6,17 @@ This project implements all the examples from the [LangGraphJS Workflows Tutoria
 
 LangGraphJS is a powerful library for building and managing complex workflows with language models. This project aims to provide practical implementations of the tutorials available on the LangGraphJS documentation site.
 
+## LLM Providers Support
+
+This project includes support for multiple LLM (Language Learning Model) providers:
+
+- **Ollama**: Local LLM provider, perfect for development and testing
+- **OpenAI**: Cloud-based provider, offering models like GPT-3.5 and GPT-4
+- **Anthropic**: Provider of Claude models, known for their capabilities in complex tasks
+- **AWS Bedrock**: Amazon's fully managed service that provides access to various foundation models
+
+You can choose your preferred LLM provider at runtime through an interactive CLI prompt. Configure the corresponding environment variables in your `.env` file to use any of these providers.
+
 ## Examples Implemented
 
 The following examples from the LangGraphJS tutorials are implemented in this project:
