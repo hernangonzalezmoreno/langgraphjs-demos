@@ -6,3 +6,4 @@ export { parallelization } from './parallelization';
 export { routing } from './routing';
 export { orchestratorWorker } from './orchestratorWorker';
 export { evaluatorOptimizer } from './evaluatorOptimizer';
+export { agent } from './agent';
