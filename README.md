@@ -29,6 +29,7 @@ The following examples from the LangGraphJS tutorials are implemented in this pr
 - **Routing**: Demonstrates how to route tasks based on structured output.
 - **Orchestrator-Worker**: Demonstrates parallel task processing where an orchestrator divides work, workers execute concurrently, and a synthesizer combines the results.
 - **Evaluator-Optimizer**: Shows how to create a feedback loop where content is generated, evaluated, and improved based on the evaluation results.
+- **Agent**: Shows how to create an agent that uses tools to perform arithmetic operations, demonstrating tool binding and structured output handling.
 
 ## Getting Started
 
