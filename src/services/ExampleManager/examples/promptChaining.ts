@@ -59,7 +59,7 @@ export async function promptChaining(llm: BaseChatModel) {
     .addEdge("polishJoke", "__end__")
     .compile();
   
-  // Draw the agent graph
+  // Draw the graph
   MermaidGraph.drawMermaidAsImage(chain);
   
   // Invoke

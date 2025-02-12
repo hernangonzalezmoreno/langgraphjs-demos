@@ -8,7 +8,8 @@ import {
   parallelization,
   routing,
   orchestratorWorker,
-  evaluatorOptimizer
+  evaluatorOptimizer,
+  agent,
 } from "./examples";
 
 export enum ExampleOptions {
@@ -20,6 +21,7 @@ export enum ExampleOptions {
   ROUTING = 'Routing',
   ORCHESTRATOR_WORKER = 'Orchestrator-Worker',
   EVALUATOR_OPTIMIZER = 'Evaluator-optimizer',
+  AGENT = 'Agent',
 }
 
 export class ExampleManager {
@@ -60,6 +62,9 @@ export class ExampleManager {
         break;
       case ExampleOptions.EVALUATOR_OPTIMIZER:
         await evaluatorOptimizer(llm);
+        break;
+      case ExampleOptions.AGENT:
+        await agent(llm);
         break;
       default:
         throw new Error('Invalid example option');

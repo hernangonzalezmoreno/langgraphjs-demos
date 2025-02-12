@@ -55,7 +55,7 @@ export async function parallelization(llm: BaseChatModel) {
     .addEdge("aggregator", "__end__")
     .compile();
 
-  // Draw the agent graph
+  // Draw the graph
   MermaidGraph.drawMermaidAsImage(parallelWorkflow);
 
   // Invoke
