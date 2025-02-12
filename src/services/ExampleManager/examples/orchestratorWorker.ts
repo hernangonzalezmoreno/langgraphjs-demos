@@ -107,7 +107,7 @@ export async function orchestratorWorker(llm: BaseChatModel) {
     .addEdge("synthesizer", "__end__")
     .compile();
 
-  // Draw the agent graph
+  // Draw the graph
   MermaidGraph.drawMermaidAsImage(orchestratorWorker);
 
   // Invoke

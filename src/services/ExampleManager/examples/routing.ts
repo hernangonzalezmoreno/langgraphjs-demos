@@ -103,7 +103,7 @@ export async function routing(llm: BaseChatModel) {
     .addEdge("llmCall3", "__end__")
     .compile();
 
-  // Draw the agent graph
+  // Draw the graph
   MermaidGraph.drawMermaidAsImage(routerWorkflow);
 
   // Invoke
